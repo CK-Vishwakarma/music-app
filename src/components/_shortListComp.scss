@@ -1,0 +1,73 @@
+.short-list-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.685);
+  transition: all $transition300 ease-in-out;
+  .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    height: 4rem;
+    width: 4rem;
+
+    .close-icon {
+      font-size: 3.5rem;
+    }
+  }
+  .empty-div {
+    background-color: whitesmoke;
+    padding: 5rem;
+    border-radius: 0.5rem;
+  }
+  .action-labels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    padding: 1rem 2rem;
+    background-color: whitesmoke;
+
+    .artist-name {
+      font-weight: 400;
+      letter-spacing: 0.1rem;
+    }
+  }
+  .fav-artist-list {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    overflow-y: scroll;
+    width: 80%;
+    max-height: 50%;
+    background-color: whitesmoke;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 01rem 2rem;
+      margin: 0.5rem 0;
+      background-color: white;
+
+      border-left: 0rem solid gray;
+      transition: all $transition300 ease-in;
+      cursor: pointer;
+      &:hover {
+        border-left: 1rem solid gray;
+        background-color: rgba(212, 211, 211, 0.418);
+      }
+      .fav-artist-div {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+    }
+  }
+}

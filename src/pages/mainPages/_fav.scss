@@ -1,0 +1,56 @@
+.favourites {
+  margin: 1rem 0;
+
+  .fav-logo {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .fav-article {
+    p {
+      margin: 1rem 0;
+    }
+
+    ul {
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.1rem 1rem;
+        margin-bottom: 0.5rem;
+        background-color: rgba(212, 211, 211, 0.418);
+
+        border-left: 0rem solid gray;
+        transition: all $transition300 ease-in;
+
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(214, 214, 214);
+          border-left: 1rem solid gray;
+        }
+
+        .left-side {
+          display: flex;
+          align-items: center;
+          gap: 0 0.5rem;
+        }
+        .right-side {
+          display: flex;
+          align-items: center;
+          gap: 0 01rem;
+        }
+      }
+    }
+  }
+
+  .empty-text-fav {
+    display: grid;
+    place-items: center;
+    min-height: 50vh;
+    color: gray;
+    font-weight: 600;
+    font-size: 5rem;
+    letter-spacing: $letter-space;
+  }
+}

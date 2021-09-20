@@ -1,0 +1,113 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  font-size: $fs-default;
+  font-weight: 300;
+  height: 100vh;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+#root {
+  height: 100%;
+}
+.App {
+  height: 100%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 6rem 1fr 6rem;
+  grid-template-areas: "header" "main" "footer";
+  height: 100%;
+}
+header {
+  grid-area: header;
+  background-color: $main-black;
+  color: $main-white;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
+  background-color: $main-black;
+  color: $main-white;
+  display: grid;
+  place-items: center;
+  font-size: $fs-sm;
+  font-weight: 400;
+  letter-spacing: $letter-space;
+}
+
+// links
+
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.active-link {
+}
+
+// ul
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+hr {
+  margin: 0 auto;
+  width: 95%;
+}
+input[type] {
+  border: none;
+  outline: none;
+  padding: 0rem;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: $fs-default;
+  height: 100%;
+  letter-spacing: $letter-space;
+
+  &::placeholder {
+    color: rgb(177, 177, 177);
+    letter-spacing: $letter-space;
+  }
+}
+button {
+  cursor: pointer;
+  outline: transparent;
+  border: transparent;
+  background-color: transparent;
+}
+
+// containers
+.container {
+  width: 100%;
+  max-width: 124rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.container-fluid {
+  width: 100%;
+  max-width: 192rem;
+  margin: 0 auto;
+}
+
+.grid-box {
+  display: grid;
+  place-items: center;
+}
