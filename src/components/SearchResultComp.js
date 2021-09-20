@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
@@ -41,8 +41,12 @@ const SearchResultComp = () => {
 
   const handleShortList = () => {
     setOpenModal(!openModal);
-    dispatch(setShortList(favArtist));
   };
+  useEffect(() => {
+    if (favArtist.length > 0) {
+      dispatch(setShortList(favArtist));
+    }
+  }, [dispatch, favArtist]);
   return (
     <>
       {openModal ? <ShortListComp setOpenModal={setOpenModal} /> : null}

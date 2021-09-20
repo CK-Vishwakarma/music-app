@@ -16,8 +16,6 @@ const LastFM = () => {
   useEffect(() => {
     if (searchText !== null) {
       dispatch(fetchArtists(searchText));
-    } else {
-      dispatch(fetchArtists(""));
     }
   }, [dispatch, searchText]);
   return (

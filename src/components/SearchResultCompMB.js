@@ -41,7 +41,18 @@ const SearchResultComp = () => {
 
   return (
     <>
-      <h4>page</h4>
+      <p
+        className="grid-box"
+        style={{
+          minHeight: "50vh",
+          fontSize: "5rem",
+          fontWeight: "600",
+          color: "grey",
+        }}
+      >
+        Coming Soon...
+      </p>
+
       {/* <article className="grid-box result-comp">
         <div className="labels">
           <p
