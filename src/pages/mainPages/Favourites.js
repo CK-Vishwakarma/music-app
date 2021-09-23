@@ -4,15 +4,15 @@ import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { removeShortList } from "../../redux/actions/lastFMActions";
+import { removeFavourite } from "../../redux/actions/musicBrainzActions";
 
 const Favourites = () => {
   const dispatch = useDispatch();
 
-  const favList = useSelector((state) => state.shortList.list);
-
-  const removeFavArtist = (list) => {
-    dispatch(removeShortList(list));
+  const favList = useSelector((state) => state.favouriteList.favouriteList);
+  // console.log(favList);
+  const removeFavArtist = (listId) => {
+    dispatch(removeFavourite(listId));
   };
 
   const renderFavList = favList.map((list, index) => {
@@ -20,7 +20,7 @@ const Favourites = () => {
       <li key={index}>
         <div className="left-side">
           <LocalActivityIcon />
-          <p>{list}</p>
+          <p>{list.title}</p>
         </div>
         <div className="right-side">
           <Button variant="contained" className="button-search" type="button">
@@ -30,7 +30,7 @@ const Favourites = () => {
             variant="contained"
             className="button-search"
             type="button"
-            onClick={() => removeFavArtist(list)}
+            onClick={() => removeFavArtist(list.id)}
           >
             <DeleteIcon />
           </Button>

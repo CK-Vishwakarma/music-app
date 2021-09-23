@@ -1,89 +1,68 @@
-import React, { useState } from "react";
-import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
-import { useSelector } from "react-redux";
-import AddIcon from "@mui/icons-material/Add";
+import React, { useEffect, useState } from "react";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { Button } from "@material-ui/core";
-import ShortListComp from "./ShortListComp";
+import { useDispatch } from "react-redux";
+import Releases from "./Releases";
+import { setFavourite } from "../redux/actions/musicBrainzActions";
 
-const SearchResultComp = () => {
+const SearchResultCompMB = ({ artist, index }) => {
+  const dispatch = useDispatch();
+  const [showReleasesDrop, setShowReleasesDrop] = useState(false);
   const [favArtist, setFavArtist] = useState([]);
+  // console.log(showReleases);
 
-  const addToShortList = (name) => {
-    setFavArtist([...favArtist, name]);
+  const addToFavList = (artist) => {
+    setFavArtist([...favArtist, artist]);
   };
+  console.log(favArtist);
 
-  const artists = useSelector((state) => state.musicBrainz.artists.releases);
-
-  if (artists) {
-    const artistList = artists.map((artist, index) => {
-      const { name } = artist;
-      // console.log(artist);
-      // console.log(name);
-      return (
-        <li key={index}>
-          {/* <div className="artist-div">
+  const showReleasesFunction = (showReleases) => {
+    setShowReleasesDrop(!showReleasesDrop);
+  };
+  const artistList = (
+    <li key={index}>
+      <div className="list-info">
+        <div className="artist-div">
           <span>{<LibraryMusicIcon />}</span>
-          <p>{}</p>
+          <p>{artist.title}</p>
         </div>
-        <Button
-          variant="contained"
-          className="button-search"
-          type="button"
-          onClick={() => addToShortList()}
-        >
-          <AddIcon />
-        </Button> */}
-        </li>
-      );
-    });
-  }
-
-  return (
-    <>
-      <p
-        className="grid-box"
-        style={{
-          minHeight: "50vh",
-          fontSize: "5rem",
-          fontWeight: "600",
-          color: "grey",
-        }}
-      >
-        Coming Soon...
-      </p>
-
-      {/* <article className="grid-box result-comp">
-        <div className="labels">
-          <p
-            className={
-              artists.length > 0 ? " search-res-text open" : "search-res-text"
-            }
-          >
-            Search Result
-          </p>
+        <div>
           <Button
             variant="contained"
-            className="button-search"
+            className="btn button-search"
             type="button"
-            onClick={handleShortList}
+            onClick={showReleasesFunction}
           >
-            Show short-list
+            {showReleasesDrop ? "Hide Releases" : "Show Releases"}
+          </Button>
+          <Button
+            style={{ marginLeft: "15px" }}
+            variant="contained"
+            className=" btn button-search"
+            type="button"
+            onClick={() => addToFavList(artist)}
+          >
+            Add To Favourate
           </Button>
         </div>
-        {artists.length > 0 ? (
-          <>
-            <ul className="artist-list"> {artistList} </ul>
-          </>
-        ) : (
-          <>
-            <h1>Search Your Favourite Author...</h1>
-            <SearchOutlinedIcon className="icon" />
-          </>
-        )}
-      </article> */}
+      </div>
+
+      {showReleasesDrop ? <Releases /> : null}
+    </li>
+  );
+
+  useEffect(() => {
+    if (favArtist.length > 0) {
+      dispatch(setFavourite(favArtist));
+    }
+  }, [dispatch, favArtist]);
+  return (
+    <>
+      <article className="grid-box mb-result-comp">
+        <ul className="artist-list">{artistList}</ul>
+      </article>
     </>
   );
 };
 
-export default SearchResultComp;
+export default SearchResultCompMB;
