@@ -707,4 +707,47 @@ header {
 .mb-result-comp .artist-list li .list-info .btn {
   background-color: white;
 }
+
+.fav-article li {
+  width: 100%;
+  background-color: rgba(212, 211, 211, 0.418);
+}
+
+.fav-article li .list-info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: white;
+  background-color: rgba(212, 211, 211, 0.418);
+  margin: 0.5rem 0;
+  padding: 1rem;
+  -webkit-transition: all 300ms ease-in;
+  transition: all 300ms ease-in;
+  cursor: pointer;
+}
+
+.fav-article li .list-info:hover {
+  background-color: rgba(211, 211, 211, 0.76);
+}
+
+.fav-article li .list-info .artist-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 0.5rem;
+}
+
+.fav-article li .list-info .btn {
+  background-color: white;
+}
 /*# sourceMappingURL=index.css.map */

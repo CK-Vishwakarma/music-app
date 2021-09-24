@@ -14,7 +14,7 @@ const SearchResultCompMB = ({ artist, index }) => {
   const addToFavList = (artist) => {
     setFavArtist([...favArtist, artist]);
   };
-  console.log(favArtist);
+  // console.log(favArtist);
 
   const showReleasesFunction = (showReleases) => {
     setShowReleasesDrop(!showReleasesDrop);
@@ -47,7 +47,7 @@ const SearchResultCompMB = ({ artist, index }) => {
         </div>
       </div>
 
-      {showReleasesDrop ? <Releases /> : null}
+      {showReleasesDrop ? <Releases artist={artist} /> : null}
     </li>
   );
 

@@ -1,4 +1,5 @@
 import { musicBrainzActionTypes } from "../constants/musicBrainz-Action-types";
+import { favoriteTypes } from "../constants/favoriteList-actionType";
 
 const initialStateMB = {
   artists: [],
@@ -32,6 +33,21 @@ export const setFavouriteReducer = (
         ...state,
         favouriteList: state.favouriteList.filter((FL) => FL.id !== payload),
       };
+    default:
+      return state;
+  }
+};
+const fetchFavArtistList = {
+  favArtists: [],
+};
+export const fetchedFavArtists = (
+  state = fetchFavArtistList,
+  { type, payload }
+) => {
+  switch (type) {
+    case favoriteTypes.FETCH_FAVOURITE_ARTISTS:
+      return { ...state, favArtists: payload };
+
     default:
       return state;
   }

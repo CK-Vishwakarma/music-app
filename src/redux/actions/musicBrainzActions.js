@@ -1,5 +1,6 @@
 import musicBrainzApi from "../../apis/musicBrainzApi";
 import { musicBrainzActionTypes } from "../constants/musicBrainz-Action-types";
+import { favoriteTypes } from "../constants/favoriteList-actionType";
 
 export const fetchMusicBrainzArtists = (searchText) => async (dispatch) => {
   try {
@@ -8,6 +9,20 @@ export const fetchMusicBrainzArtists = (searchText) => async (dispatch) => {
     );
     dispatch({
       type: musicBrainzActionTypes.FETCH_ARTISTS_MB,
+      payload: response.data.releases,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchFavouriteArtists = (favArtists) => async (dispatch) => {
+  try {
+    const response = await musicBrainzApi.get(
+      `?query=release:${favArtists}&fmt=json`
+    );
+    dispatch({
+      type: favoriteTypes.FETCH_FAVOURITE_ARTISTS,
       payload: response.data.releases,
     });
   } catch (error) {
